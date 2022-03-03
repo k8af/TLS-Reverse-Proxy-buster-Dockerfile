@@ -27,4 +27,17 @@ The project aim is to provide a Dockerfile to build your own debian 10 based doc
 | 10 | SSL/TLS Security | Apply TLS/SSL certificates by using certbots certificates on https |
 
 ----
+## Prerequisites
+All you need to start is:
+- Dockerfile experience
+- Docker networking experience
+- debian linux experience
+- debian 10 (slim) for the next docker image
+- Apache 2.4 for the next docker image
+- Apache Reverse proxy experience
+- Apache HTTPS Setup experience
+- Apache VHost experience
+- LetsEncrypt / Certbot experience
+- Some TCP/IP networking and firewalling experience
 
+----
