@@ -91,7 +91,7 @@ You need to do some steps before you can install docker-ce.
 ### Check that docker daemon is running
 > #systemctl status docker
 > 
-
+---
 ### Install some usefull tools
 Install some packages if you need more, add some more tools.
 We don't need to install any manpages on the vps.
@@ -102,6 +102,7 @@ We don't need to install any manpages on the vps.
 > #apt install apt-file iproute2 inetutils-ping dns-utils free atop tree net-tools ufw
 
 Try to reduce huge packages installations to minimize binary data on your host machine.
+
 ---
 
 ### Dockerfile Image & Container Setup
@@ -131,6 +132,8 @@ As you can see we add two hosts and one ip on this stage. We publishing our port
 > #docker run -itd -h rproxy -p 10250:80 --ip=172.23.3.1 --add-host=rproxy:172.23.3.1 --add-host=fvtt:172.23.3.2 --name=foundryvtt-reverse-proxy --network fvtt-net fvtt-rproxy-deb10-slim
 > 
 
+---
+
 #### Start container manually
 > #docker container start foundryvtt-server
 > 
@@ -139,20 +142,24 @@ As you can see we add two hosts and one ip on this stage. We publishing our port
 > #docker container stop foundryvtt-server
 >
 
+---
+
 #### Monitoring Docker Container Status
 After you run the container, have a look at the container stats of your host in a seperate terminal with the following command:
 > docker container stats
 > 
 
+---
+
 #### Connect with container as terminal session in a bash shell
 > #docker exec -it foundryvtt-server /bin/bash
 >
 
-----
+---
 
 Hint: You also can try out my simple shell script "container_manager.sh" to run, start, stop and login to your container.
 
-----
+---
 
 #### Port Forwarding
 Foundry VTT Server is listening on Port 30000 by default, thats why we exposed that port without publishing it.
@@ -164,4 +171,16 @@ Take a minute to think about your port forwardings.
 > 
 
 ----
+
+### Workflow Object 5
+
+Start at first your FOundryVTT Container then the proxy container. Check your docker host from outside to test accessability of your containers.
+Evaluate your ports of the docker host to open only the proxy container port to public.
+
+Next steps we will make are
+* uploading Dockerfiles from both images to create images & container on your vps
+* Operation Testing online accessability of foundryvtt gui
+* Create tls/ssl keys and certificates
+
+
 
